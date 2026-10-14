@@ -38,3 +38,4 @@ console.log(operate("+", 5, 7));
 console.log(operate("-", 4, 2));
 console.log(operate("*", 9, 3));
 console.log(operate("/", 10, 2));
+
