@@ -3,10 +3,8 @@ let num1;
 let num2;
 
 const buttons = document.querySelector(".buttons");
-console.log(buttons);
 
 const result = document.querySelector(".result");
-console.log(result);
 
 function add(num1, num2) {
   return num1 + num2;
@@ -46,8 +44,11 @@ function updateResultDisplay(updateResult) {
 }
 
 buttons.addEventListener("click", (event) => {
-  if (event.target.classList.contains("btn")) {
-    updateResultDisplay(event.target);
+  const target = event.target;
+  if (target.classList.contains("btn")) {
+    if (target.classList.contains("number")) {
+      updateResultDisplay(target);
+    }
   }
 });
 
