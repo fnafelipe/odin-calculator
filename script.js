@@ -39,19 +39,21 @@ function operate(operation, num1, num2) {
 }
 
 function updateResultDisplay(updateResult) {
-  result.textContent += updateResult.textContent;
+  result.textContent += updateResult;
   num1 = result.textContent;
+}
+
+function clearResultDisplay() {
+  result.textContent = "";
 }
 
 buttons.addEventListener("click", (event) => {
   const target = event.target;
   if (target.classList.contains("btn")) {
     if (target.classList.contains("number")) {
-      updateResultDisplay(target);
+      updateResultDisplay(target.textContent);
+    } else if (target.classList.contains("clear")) {
+      clearResultDisplay();
     }
   }
 });
-
-function teste() {
-  console.log(1);
-}
