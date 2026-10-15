@@ -7,6 +7,12 @@ const buttons = document.querySelector(".buttons");
 
 const result = document.querySelector(".result");
 
+const accumulator = document.querySelector(".accumulator");
+
+function formatAccumulator(num, operator) {
+  return `${num1} ${operator}`;
+}
+
 function formatResult(result) {
   return Number(result.toFixed(2));
 }
@@ -56,23 +62,30 @@ function handleClear() {
   num1 = undefined;
   num2 = undefined;
   operator = undefined;
-  updateDisplay("");
+  updateResultDisplay("");
+  updateAccumulatorDisplay("");
   console.log(num1, num2, operator);
 }
 
-function updateDisplay(displayMsg) {
+function updateResultDisplay(displayMsg) {
   result.textContent = displayMsg;
+}
+
+function updateAccumulatorDisplay(accumulatorMsg) {
+  accumulator.textContent = accumulatorMsg;
 }
 
 function handleOperation(target) {
   if (!operator) {
     num1 = Number(result.textContent);
     operator = target;
-    updateDisplay("");
+    updateResultDisplay("");
+    updateAccumulatorDisplay(formatAccumulator(num1, operator));
   } else {
     handleEquals();
     operator = target;
-    updateDisplay("");
+    updateResultDisplay("");
+    updateAccumulatorDisplay(formatAccumulator(num1, operator));
   }
   console.log(num1, num2, operator);
 }
@@ -84,7 +97,8 @@ function handleEquals() {
   total = operate(operator, num1, num2);
   console.log(num1, num2, operator, total);
   handleClear();
-  updateDisplay(total);
+  updateAccumulatorDisplay("");
+  updateResultDisplay(total);
   num1 = total;
 }
 
