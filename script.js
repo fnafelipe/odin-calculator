@@ -1,10 +1,15 @@
 let operator;
 let num1;
 let num2;
+let total;
 
 const buttons = document.querySelector(".buttons");
 
 const result = document.querySelector(".result");
+
+function formatResult(result) {
+  return Number(result.toFixed(2));
+}
 
 function add(num1, num2) {
   return num1 + num2;
@@ -25,17 +30,22 @@ function divide(num1, num2) {
 function operate(operation, num1, num2) {
   switch (operation) {
     case "+":
-      return add(num1, num2);
+      total = add(num1, num2);
+      break;
     case "-":
-      return subtract(num1, num2);
+      total = subtract(num1, num2);
+      break;
     case "*":
-      return multiply(num1, num2);
+      total = multiply(num1, num2);
+      break;
     case "/":
-      return divide(num1, num2);
+      total = divide(num1, num2);
+      break;
     default:
       console.log("Invalid operation");
       return null;
   }
+  return formatResult(total);
 }
 
 function handleNumber(updateResult) {
