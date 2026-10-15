@@ -47,6 +47,7 @@ function handleClear() {
   num2 = undefined;
   operator = undefined;
   updateDisplay("");
+  console.log(num1, num2, operator);
 }
 
 function updateDisplay(displayMsg) {
@@ -60,6 +61,8 @@ function handleOperation(target) {
     updateDisplay("");
   } else {
     handleEquals();
+    operator = target;
+    updateDisplay("");
   }
   console.log(num1, num2, operator);
 }
@@ -69,10 +72,10 @@ function handleEquals() {
 
   num2 = Number(result.textContent);
   total = operate(operator, num1, num2);
+  console.log(num1, num2, operator, total);
   handleClear();
   updateDisplay(total);
   num1 = total;
-  console.log(num1, num2, operator);
 }
 
 buttons.addEventListener("click", (event) => {
